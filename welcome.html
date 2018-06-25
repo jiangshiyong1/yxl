@@ -8,29 +8,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"
     />
+    <script type="text/javascript" src="./lib/jquery.js"></script>
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="./css/xadmin.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link type="text/css" rel="stylesheet" href="./lib/layui/css/layui.css">
+    <script src="./js/echarts.js" charset="utf-8"></script>
+    <script src="./js/welcome/welcome-bar.js" charset="utf-8"></script>
+    <script src="./js/welcome/welcome-line.js" charset="utf-8"></script>
+    <script src="./js/welcome/welcome-btn.js" charset="utf-8"></script>
+    <script src="./js/welcome/welcome-table.js" charset="utf-8"></script>
+    <script src="./lib/layui/lay/modules/laydate.js" charset="utf-8"></script>
 </head>
 
 <body>
     <div class="x-body">
         <div class="layui-row layui-col-space10">
-            <div class="layui-col-md6">
-                <fieldset class="layui-elem-field">
+            <div class="layui-col-md5">
+                <div class="jsy-card">
                     <div class="layui-field-box">
-                        <div>2222</div>
+                        <div style="width: 100%;height:300px;" id="mainBar"></div>
                     </div>
-                </fieldset>
+                </div>
             </div>
-            <div class="layui-col-md6">
-                <fieldset class="layui-elem-field">
+            <div class="layui-col-md7">
+                <div class="jsy-card">
                     <div class="layui-field-box">
-                        <div>2222</div>
+                        <div style="width: 100%;height:300px;" id="mainLine"></div>
                     </div>
-                </fieldset>
+                </div>
             </div>
         </div>
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-md4">
+                <button id="day-1" class="layui-btn layui-btn-primary">今天</button>
+                <button id="day-2" class="layui-btn layui-btn-primary">3天</button>
+                <button id="day-3" class="layui-btn layui-btn-primary">7天</button>
+                <button id="day-4" class="layui-btn layui-btn-primary">30天</button>
+                <button id="day-5" class="layui-btn layui-btn-primary">自定义</button>
+            </div>
+            <div class="layui-col-md4" style="text-align:center;">
+                <button id="class-1" class="layui-btn layui-btn-primary">全部</button>
+                <button id="class-2" class="layui-btn layui-btn-primary">社会民生</button>
+                <button id="class-3" class="layui-btn layui-btn-primary">经济金融</button>
+                <button id="class-4" class="layui-btn layui-btn-primary">教科文卫</button>
+                <button id="class-5" class="layui-btn layui-btn-primary">更多</button>
+            </div>
+            <div class="layui-col-md4" style="text-align:right;">
+                <button id="address-1" class="layui-btn layui-btn-primary">全部</button>
+                <button id="address-2" class="layui-btn layui-btn-primary">北京</button>
+                <button id="address-3" class="layui-btn layui-btn-primary">青海</button>
+                <button id="address-4" class="layui-btn layui-btn-primary">甘肃</button>
+                <button id="address-5" class="layui-btn layui-btn-primary">更多</button>
+            </div>
+        </div>
+        <div class="layui-row">
+            
+        </div>
+    </div class ="new-word-table">
+    <div>
+        <table id="indexTable"></table>
     </div>
     <script>
         var _hmt = _hmt || [];
@@ -41,6 +80,86 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
+    <style>
+        .layui-btn {
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            padding: 0 10px;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 2px;
+            cursor: pointer;
+            opacity: .9;
+        }
+
+        .layui-btn-primary {
+            border: 1px solid white;
+            background-color: rgb(34, 34, 34);
+            color: white;
+        }
+
+        .layui-btn-primary:hover {
+            border: 1px solid #FFFF00;
+            background-color: rgb(34, 34, 34);
+            color: #FFFF00;
+        }
+
+        .btn-focus {
+            border: 1px solid #FFFF00;
+            background-color: rgb(34, 34, 34);
+            color: #FFFF00;
+        }
+        .new-word-table{
+            width: 100%;
+            display: inline-block;
+            float: left;
+        }
+        /* .layui-table {
+            width: 100% !important;
+        } */
+
+        .layui-table thead tr,
+        .layui-table-fixed-l tr,
+        .layui-table-header,
+        .layui-table-mend,
+        .layui-table-patch,
+        .layui-table-tool {
+            background-color: rgb(34, 34, 34);
+        }
+
+        .layui-table td,
+        .layui-table th,
+        .layui-table-header,
+        .layui-table-tool,
+        .layui-table-view,
+        .layui-table[lay-skin=row],
+        .layui-table[lay-skin=line] {
+            border: 1px solid #e2e2e2;
+        }
+
+        .layui-table th {
+            text-align: center;
+            font-weight: 400;
+            color: #1E90FF
+        }
+
+        .layui-table td {
+            text-align: center;
+            font-weight: 400;
+            color: white;
+        }
+
+        tbody {
+            background: rgb(34, 34, 34);
+        }
+
+        .layui-table tbody tr:hover,
+        .layui-table-hover {
+            background: #2B2B2B !important;
+        }
+    </style>
 </body>
 
 </html>

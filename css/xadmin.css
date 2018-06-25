@@ -474,5 +474,13 @@ table th, table td {
 		width: 100%;
 		margin: 10px;
 	}
+	
+}
+
+.jsy-card {
+	margin-bottom: 10px;
+	padding: 0;
+	border: 1px solid #2B2B2B;
+	background: #2B2B2B;
 }
 
