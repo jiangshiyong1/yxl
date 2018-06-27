@@ -2,31 +2,22 @@ $(function () {
     layui.use('table', function () {
         var table = layui.table;
         table.render({
-            elem: '#indexTable', cellMinWidth: 400, cols: [
-                [
-                {type:'checkbox'},
-            {field:'tool',  title: '服务器资源'}
-            ,{field:'web',  title: '支付手段'}
-            ,{field:'introduce',  title: '联系方式'}
-            ,{field:'experience', title: '操作',align:'center', toolbar: '#barDemo' }
-                ]
-            ]
-            ,data: [{
-            "tool": "服务器资源1，服务器资源2，服务器资源3",
-            "web": "支付宝，微信，银联。。。",
-            "introduce": "13000000000"
-        },
-        {
-            "tool": "服务器资源1，服务器资源2，服务器资源3",
-            "web": "支付宝，微信，银联。。。",
-            "introduce": "13000000000"
-        },
-        {
-            "tool": "服务器资源1，服务器资源2，服务器资源3",
-            "web": "支付宝，微信，银联。。。",
-            "introduce": "13000000000"
-        }]
-        ,page: false
+            elem: '#indexTable'
+            , url: './json/table.json'
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , cols: [[
+                { field: 'ranking', width: 80, title: '排名' }
+                , { field: 'title', width: '20%', minWidth: 100, title: '文章标题' }
+                , { field: 'province', width: 80, title: '省份' }
+                , { field: 'times', width: '10%', minWidth: 100, title: '时间' }
+                , { field: 'effect', title: '影响力指数', width: '20%', minWidth: 100, templet: '#progress', unresize: false } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                , { field: 'spread', title: '传播度' }
+                , { field: 'remarkable', title: '显著度' }
+                , { field: 'praise', title: '好评度' }
+                , { field: 'authority', title: '权威度' }
+                , { field: 'rich', title: '丰富度' }
+
+            ]]
         });
     });
 })

@@ -16,6 +16,7 @@
     <script type="text/javascript" src="./lib/jquery.js"></script>
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
 
 </head>
 
@@ -41,6 +42,35 @@
             </dl>
           </li>
         </ul> -->
+
+        <ul class="layui-nav right " lay-filter="">
+            <li class="layui-nav-item">
+                <a id="moreItem" title="个人信息" href="javascript:;">
+                    <i class="layui-icon">&#xe770;</i>
+                </a>
+                <dl class="layui-nav-child">
+                    <!-- 二级菜单 -->
+                    <dd>
+                        <a onclick="x_admin_show('资讯','http://www.baidu.com')">
+                            <i class="iconfont">&#xe6a2;</i>用户列表</a>
+                    </dd>
+                    <dd>
+                        <a onclick="x_admin_show('图片','http://www.baidu.com')">
+                            <i class="iconfont">&#xe6a8;</i>日志管理</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+
+        <ul class="layui-nav right " lay-filter="">
+            <li class="layui-nav-item">
+                <a id="moreItem" onclick="showTaskList()" title="任务列表" href="javascript:;">
+                    <i class="layui-icon">&#xe63c;</i>
+                </a>
+            </li>
+        </ul>
+        
+
         <ul class="layui-nav right" lay-filter="">
             <li class="layui-nav-item">
                 <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
@@ -48,16 +78,6 @@
             <li class="layui-nav-item">
                 <a title="搜索" href="javascript:;">
                     <i class="layui-icon">&#xe615;</i>
-                </a>
-            </li>
-            <li class="layui-nav-item">
-                <a title="个人信息" href="javascript:;">
-                    <i class="layui-icon">&#xe770;</i>
-                </a>
-            </li>
-            <li class="layui-nav-item">
-                <a title="设置" href="javascript:;">
-                    <i class="layui-icon ">&#xe63c;</i>
                 </a>
             </li>
         </ul>
@@ -73,7 +93,7 @@
             <li>首页</li>
           </ul> -->
         <div class="layui-tab-content">
-            <div class="layui-tab-item layui-show">
+            <div id="mainPage" class="layui-tab-item layui-show">
                 <iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
@@ -134,7 +154,44 @@
             transition: all .3s;
             -webkit-transition: all .3s;
         }
-        
+
+        /* 下拉菜单字体色 */
+
+        /* .layui-nav .layui-nav-item a:hover,.layui-nav .layui-this a {
+            color: red
+        }
+         */
+
+        .layui-nav-child {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 65px;
+            min-width: 100%;
+            line-height: 36px;
+            padding: 5px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .12);
+            border: 1px solid #d2d2d2;
+            background-color: rgb(34, 34, 34);
+            z-index: 100;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+
+        /* 去掉下拉icon */
+
+        .layui-nav .layui-nav-more,
+        .layui-nav-mored {
+            border: 0px;
+        }
+
+        .layui-nav {
+            padding: 0px;
+        }
+
+        .layui-nav-child {
+            left: -90px !important;
+        }
     </style>
 </body>
 

@@ -483,4 +483,42 @@ table th, table td {
 	border: 1px solid #2B2B2B;
 	background: #2B2B2B;
 }
+.jsy-divBorder {
+	/* border: 1px solid #2B2B2B */
+}
+
+.layui-table-click {
+	background: #2B2B2B;
+}
+
+/* 修改checkbox默认样式 */
+.layui-icon-ok {
+	background: #2B2B2B !important;
+	color: #2B2B2B !important;
+}
+.layui-form-checked[lay-skin=primary] i {
+    border-color: #5FB878 !important;
+    color: #5FB878 !important;
+}
+
+.layui-btn-danger-jsy {
+	border: 1px solid rgb(34, 34, 34) !important;
+	background-color: #FF5722 !important;
+	color: white !important;
+}
+
+.layui-btn-danger-jsy:hover {
+	border: 1px solid #FF5722!important;
+}
+
+.layui-btn-new-jsy {
+	border: 1px solid rgb(34, 34, 34)!important;
+	background-color: #5FB878!important;
+	color: white!important;
+}
+.layui-btn-new-jsy:hover {
+	border: 1px solid #5FB878!important;
+}
+
+
 
