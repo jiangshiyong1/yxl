@@ -51,12 +51,16 @@
                 <dl class="layui-nav-child">
                     <!-- 二级菜单 -->
                     <dd>
-                        <a onclick="x_admin_show('资讯','http://www.baidu.com')">
-                            <i class="iconfont">&#xe6a2;</i>用户列表</a>
+                        <a onclick="showPage('userList.html')">
+                            <i class="iconfont">&#xe6a2;</i>用户管理</a>
                     </dd>
                     <dd>
-                        <a onclick="x_admin_show('图片','http://www.baidu.com')">
+                        <a onclick="showPage('logMange.html')">
                             <i class="iconfont">&#xe6a8;</i>日志管理</a>
+                    </dd>
+                    <dd>
+                        <a onclick="showPage('effect.html')">
+                            <i class="iconfont">&#xe6a8;</i>单篇影响力</a>
                     </dd>
                 </dl>
             </li>
@@ -69,7 +73,7 @@
                 </a>
             </li>
         </ul>
-        
+
 
         <ul class="layui-nav right" lay-filter="">
             <li class="layui-nav-item">

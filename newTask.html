@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"
+    />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link type="text/css" rel="stylesheet" href="./lib/layui/css/layui.css">
+    <script type="text/javascript" src="./lib/jquery.js"></script>
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script src="./js/taskList/newTask-btn.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="x-body">
+        <form style="color:#fff" class="layui-form">
+            <div style="padding-top:20px;" class="layui-form-item">
+                <label class="layui-form-label">任务类型</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" value="0" title="关键词任务" checked="">
+                    <input type="radio" name="sex" value="1" title="url任务">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="times" class="layui-form-label">
+                    <span class="x-red">*</span>时间
+                </label>
+                <div style="width:600px;padding-top:10px;" class="layui-input-inline">
+                    <button id="day-1" class="layui-btn layui-btn-primary">今天</button>
+                    <button id="day-2" class="layui-btn layui-btn-primary">3天</button>
+                    <button id="day-3" class="layui-btn layui-btn-primary">7天</button>
+                    <button id="day-4" class="layui-btn layui-btn-primary">30天</button>
+                    <button id="day-5" class="layui-btn layui-btn-primary">自定义</button>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="times" class="layui-form-label">
+                    <span class="x-red">*</span>通道
+                </label>
+                <div style="width:600px;padding-top:10px;" class="layui-input-inline">
+                    <button id="entry-1" class="layui-btn layui-btn-primary">全部</button>
+                    <button id="entry-2" class="layui-btn layui-btn-primary">网站</button>
+                    <button id="entry-3" class="layui-btn layui-btn-primary">论坛</button>
+                    <button id="entry-4" class="layui-btn layui-btn-primary">博客</button>
+                    <button id="entry-5" class="layui-btn layui-btn-primary">APP</button>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="keywords" class="layui-form-label">
+                    <span class="x-red">*</span>包含关键词
+                </label>
+                <div class="layui-input-inline">
+                    <select name="keywords">
+                        <option value="">--请选择--</option>
+                        <option value="标题+正文">标题+正文</option>
+                        <option value="仅标题">仅标题</option>
+                        <option value="仅正文">仅正文</option>
+                    </select>
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                    “&”，“|”代表逻辑或，“（）”表示优先级
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label"></label>
+                <div class="layui-input-block">
+                    <textarea placeholder="" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="keywords" class="layui-form-label">
+                    <span class="x-red">*</span>排除词
+                </label>
+                <div class="layui-input-inline">
+                    <select name="keywords">
+                        <option value="">--请选择--</option>
+                        <option value="标题+正文">标题+正文</option>
+                        <option value="仅标题">仅标题</option>
+                        <option value="仅正文">仅正文</option>
+                    </select>
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                    “&”，“|”代表逻辑或，“（）”表示优先级
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label"></label>
+                <div class="layui-input-block">
+                    <textarea placeholder="" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="orgin-btn layui-btn-new-jsy" lay-submit="" lay-filter="demo1">立即提交</button>
+                    <button type="reset" class="orgin-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        layui.use(['form', 'layer'], function () {
+            $ = layui.jquery;
+            var form = layui.form
+                , layer = layui.layer;
+
+            //自定义验证规则
+            form.verify({
+                nikename: function (value) {
+                    if (value.length < 5) {
+                        return '昵称至少得5个字符啊';
+                    }
+                }
+                , pass: [/(.+){6,12}$/, '密码必须6到12位']
+                , repass: function (value) {
+                    if ($('#L_pass').val() != $('#L_repass').val()) {
+                        return '两次密码不一致';
+                    }
+                }
+            });
+
+            //监听提交
+            form.on('submit(add)', function (data) {
+                console.log(data);
+                //发异步，把数据提交给php
+                layer.alert("增加成功", { icon: 6 }, function () {
+                    // 获得frame索引
+                    var index = parent.layer.getFrameIndex(window.name);
+                    //关闭当前frame
+                    parent.layer.close(index);
+                });
+                return false;
+            });
+
+
+        });
+    </script>
+    <script>var _hmt = _hmt || []; (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script>
+    <style>
+        .layui-btn {
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            padding: 0 10px;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 2px;
+            cursor: pointer;
+            opacity: .9;
+        }
+
+        .orgin-btn {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 18px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .layui-btn-primary {
+            border: 1px solid white;
+            background-color: rgb(34, 34, 34);
+            color: white;
+        }
+
+        .layui-btn-primary:hover {
+            border: 1px solid #5FB878;
+            background-color: rgb(34, 34, 34);
+            color: #5FB878;
+        }
+
+        .btn-focus {
+            border: 1px solid #5FB878;
+            background-color: rgb(34, 34, 34);
+            color: #5FB878;
+        }
+    </style>
+</body>
+
+</html>

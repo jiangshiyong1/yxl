@@ -520,5 +520,38 @@ table th, table td {
 	border: 1px solid #5FB878!important;
 }
 
+.layui-layer-title{
+	background: rgb(34, 34, 34)!important;
+	color:white!important;
+}
+.layui-layer-content{
+	background: rgb(34, 34, 34)!important;
+}
+.layui-input {
+	background:  rgb(34, 34, 34)!important;
+	border: #fff 1px solid !important;
+	color:#fff;
+}
 
+.layui-anim-upbit {
+	background:  rgb(34, 34, 34)!important;
+	color:#fff!important;
+}
 
+dd{
+	color:#fff !important;
+}
+dd:hover{
+	background: #2B2B2B !important;
+}
+
+.layui-textarea {
+	background:  rgb(34, 34, 34)!important;
+	color:#fff;
+}
+.layui-layer-setwin a {
+	color:#fff !important;
+}
+.layui-layer-ico {
+	color:white;
+}

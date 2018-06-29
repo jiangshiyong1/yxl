@@ -1070,7 +1070,7 @@ input[type="text"]:focus {
 
 .layui-select-title > input {
     height: 31px;
-    width: 120px;
+    /* width: 120px; */
     /*margin-top: 8px;*/
     margin-right: 10px;
     font-size: 14px;

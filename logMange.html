@@ -18,8 +18,7 @@
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script src="./js/echarts.js" charset="utf-8"></script>
     <script src="./js/xadmin.js" charset="utf-8"></script>
-    <script src="./js/taskList/task-main.js" charset="utf-8"></script>
-    <script src="./js/taskList/task-btn.js" charset="utf-8"></script>
+    <script src="./js/log/log-main.js" charset="utf-8"></script>
     <script src="./lib/layui/lay/modules/laydate.js" charset="utf-8"></script>
 </head>
 
@@ -28,53 +27,72 @@
         <div style="padding:20px 0 20px 0;" class="layui-row">
             <div class="jsy-divBorder">
                 <i class="layui-icon layui-icon-template-1" style="font-size: 25px; color: white"></i>
-                <span style="font-size: 22px; color: white; padding-left:10px;">任务列表</span>
-            </div>
-        </div>
-        <div class="layui-row layui-col-space10">
-            <div class="layui-col-md4">
-                <button id="day-1" class="layui-btn layui-btn-primary">今天</button>
-                <button id="day-2" class="layui-btn layui-btn-primary">3天</button>
-                <button id="day-3" class="layui-btn layui-btn-primary">7天</button>
-                <button id="day-4" class="layui-btn layui-btn-primary">30天</button>
-                <button id="day-5" class="layui-btn layui-btn-primary">自定义</button>
-            </div>
-            <div class="layui-col-md4" style="text-align:center;">
-                <button id="class-1" class="layui-btn layui-btn-primary">全部</button>
-                <button id="class-2" class="layui-btn layui-btn-primary">社会民生</button>
-                <button id="class-3" class="layui-btn layui-btn-primary">经济金融</button>
-                <button id="class-4" class="layui-btn layui-btn-primary">教科文卫</button>
-                <button id="class-5" class="layui-btn layui-btn-primary">更多</button>
-            </div>
-            <div class="layui-col-md4" style="text-align:right;">
-                <button id="address-1" class="layui-btn layui-btn-primary">全部</button>
-                <button id="address-2" class="layui-btn layui-btn-primary">北京</button>
-                <button id="address-3" class="layui-btn layui-btn-primary">青海</button>
-                <button id="address-4" class="layui-btn layui-btn-primary">甘肃</button>
-                <button id="address-5" class="layui-btn layui-btn-primary">更多</button>
-            </div>
-        </div>
-        <div style="padding-top:20px ;" class="layui-row">
-            <div class="jsy-card">
-                <div class="layui-row">
-                    <div class="layui-col-md6">
-                        <a onclick="x_admin_show('新建任务','newTask.html',800, 500)" style="height: 30px;line-height: 30px;padding: 0 18px;" class="layui-btn layui-btn-new-jsy layui-btn-xs" lay-event="del">新建</a>
-                        <a style="height: 30px;line-height: 30px;padding: 0 18px;" class="layui-btn layui-btn-danger-jsy layui-btn-xs" lay-event="del">删除</a>
-                    </div>
-                    <div class="layui-col-md6">
-                        <i class="layui-icon layui-icon-search" style="padding-left:10px;font-size: 25px; color: white;float: right;"></i>
-                        <input style="width:200px;float:right;" type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
+                <span style="font-size: 22px; color: white; padding-left:10px;">日志管理</span>
             </div>
         </div>
         <div class="layui-row">
-                <table id="taskTable"></table>
+            <div class="layui-col-md4 layui-col-xs4" style="float:left;">
+                <form style="color:#fff" class="layui-form">
+                    <div class="layui-form-item">
+                        <label for="keywords" class="layui-form-label">
+                            <span class="x-red">*</span>操作模块
+                        </label>
+                        <div class="layui-input-inline">
+                            <select name="keywords">
+                                <option value="">--请选择--</option>
+                                <option value="标题+正文">标题+正文</option>
+                                <option value="仅标题">仅标题</option>
+                                <option value="仅正文">仅正文</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-col-md4 layui-col-xs4">
+                <form style="color:#fff" class="layui-form">
+                    <div class="layui-form-item">
+                        <label for="keywords" class="layui-form-label">
+                            <span class="x-red">*</span>操作人
+                        </label>
+                        <div class="layui-input-inline">
+                            <select name="keywords">
+                                <option value="">--请选择--</option>
+                                <option value="标题+正文">标题+正文</option>
+                                <option value="仅标题">仅标题</option>
+                                <option value="仅正文">仅正文</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-col-md4 layui-col-xs4">
+                <form style="color:#fff" class="layui-form">
+                    <div class="layui-form-item">
+                        <label for="keywords" class="layui-form-label">
+                            <span class="x-red">*</span>操作时间
+                        </label>
+                        <div class="layui-input-inline">
+                            <select name="keywords">
+                                <option value="">--请选择--</option>
+                                <option value="标题+正文">标题+正文</option>
+                                <option value="仅标题">仅标题</option>
+                                <option value="仅正文">仅正文</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="layui-row">
+            <table id="taskTable"></table>
         </div>
         <div style="text-align: center">
             <div id="page"></div>
         </div>
     </div>
+    <script type="text/html" id="switchTp">
+        <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="" lay-filter="sexDemo" {{ d.id == 1 ? 'checked' : '' }}>
+      </script>
     <script type="text/html" id="barBtn">
         <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>-->
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -98,7 +116,6 @@
             line-height: 25px;
             border: 1px solid #464545;
             background-color: rgb(34, 34, 34);
-            border-radius: 10px;
             color: #fff;
         }
 
