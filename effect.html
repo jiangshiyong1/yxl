@@ -18,61 +18,177 @@
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script src="./js/echarts.js" charset="utf-8"></script>
     <script src="./js/xadmin.js" charset="utf-8"></script>
-    <script src="./js/taskList/task-main.js" charset="utf-8"></script>
-    <script src="./js/taskList/task-btn.js" charset="utf-8"></script>
+    <script src="./js/effect/effect-gauge.js" charset="utf-8"></script>
+    <script src="./js/effect/effect-radar.js" charset="utf-8"></script>
+    <script src="./js/effect/effect-line.js" charset="utf-8"></script>
+    <script src="./js/effect/effect-map.js" charset="utf-8"></script>
+    <script src="./js/effect/effect-pie.js" charset="utf-8"></script>
+    <script src="./js/effect/effect-bar.js" charset="utf-8"></script>
+    <script src="./js/china.js" charset="utf-8"></script>
     <script src="./lib/layui/lay/modules/laydate.js" charset="utf-8"></script>
 </head>
 
 <body>
     <div class="x-body">
-        <div style="padding:20px 0 20px 0;" class="layui-row">
-            <div class="jsy-divBorder">
-                <i class="layui-icon layui-icon-template-1" style="font-size: 25px; color: white"></i>
-                <span style="font-size: 22px; color: white; padding-left:10px;">任务列表</span>
-            </div>
-        </div>
         <div class="layui-row layui-col-space10">
-            <div class="layui-col-md4">
-                <button id="day-1" class="layui-btn layui-btn-primary">今天</button>
-                <button id="day-2" class="layui-btn layui-btn-primary">3天</button>
-                <button id="day-3" class="layui-btn layui-btn-primary">7天</button>
-                <button id="day-4" class="layui-btn layui-btn-primary">30天</button>
-                <button id="day-5" class="layui-btn layui-btn-primary">自定义</button>
+            <div class="layui-col-md3">
+                <div class="jsy-card">
+                    <div style="height:200px;" id="gauge"></div>
+                </div>
             </div>
-            <div class="layui-col-md4" style="text-align:center;">
-                <button id="class-1" class="layui-btn layui-btn-primary">全部</button>
-                <button id="class-2" class="layui-btn layui-btn-primary">社会民生</button>
-                <button id="class-3" class="layui-btn layui-btn-primary">经济金融</button>
-                <button id="class-4" class="layui-btn layui-btn-primary">教科文卫</button>
-                <button id="class-5" class="layui-btn layui-btn-primary">更多</button>
-            </div>
-            <div class="layui-col-md4" style="text-align:right;">
-                <button id="address-1" class="layui-btn layui-btn-primary">全部</button>
-                <button id="address-2" class="layui-btn layui-btn-primary">北京</button>
-                <button id="address-3" class="layui-btn layui-btn-primary">青海</button>
-                <button id="address-4" class="layui-btn layui-btn-primary">甘肃</button>
-                <button id="address-5" class="layui-btn layui-btn-primary">更多</button>
-            </div>
-        </div>
-        <div style="padding-top:20px ;" class="layui-row">
-            <div class="jsy-card">
-                <div class="layui-row">
-                    <div class="layui-col-md6">
-                        <a onclick="x_admin_show('新建任务','newTask.html',800, 500)" style="height: 30px;line-height: 30px;padding: 0 18px;" class="layui-btn layui-btn-new-jsy layui-btn-xs" lay-event="del">新建</a>
-                        <a style="height: 30px;line-height: 30px;padding: 0 18px;" class="layui-btn layui-btn-danger-jsy layui-btn-xs" lay-event="del">删除</a>
-                    </div>
-                    <div class="layui-col-md6">
-                        <i class="layui-icon layui-icon-search" style="padding-left:10px;font-size: 25px; color: white;float: right;"></i>
-                        <input style="width:200px;float:right;" type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input">
+            <div class="layui-col-md9">
+                <div style="height:200px;" class="jsy-card">
+                    <div class="msg-list-main" id="one">
+                        <div style="color: #fff" class="msg-list">
+                            <a href="javascript:void(0)" style="color:#5FB878" class="msg-title">网传中共将全面封网 专家称不太可能实现</a>
+                            <span style="float:right;padding-top:15px;"> 新华网-首页 / 2017-11-07 00:00:00</span>
+                            <p>【大纪元2018年01月11日讯】（大纪元记者萧律生采访报导）近日，网传2018年1月11日前，
+                                <span>中共</span>会全面封锁 虚拟私人网络（VPN）及广域网络（SD-WAN）接入。不过技术专家认为这种操作不太可能实现，对网民的
+                                <span>翻墙</span>影响不是太大。
+                            </p>
+                            <br/>
+                            <br/>
+                            <div class="msg-list-column">
+                                <div class="msg-list-column-list">
+                                    <a>
+                                        <i class="iconfont">&#xe715;</i>
+                                    </a>
+                                    <span>北京</span>
+                                </div>
+                                <div class="msg-list-column-list">
+                                    <a>
+                                        <i class="layui-icon layui-icon-note"></i>
+                                    </a>
+                                    <span>教科文卫</span>
+                                </div>
+                                <div class="msg-list-column-list">
+                                    <a>
+                                        <i class="layui-icon layui-icon-rate"></i>
+                                    </a>
+                                    <span>首页头条</span>
+                                </div>
+                                <div class="msg-list-column-list">
+                                    <a>
+                                        <i class="iconfont">&#xe705;</i>
+                                    </a>
+                                    <span>5000字</span>
+                                </div>
+                                <div style="float:right;padding-top:2px;" class="msg-list-column-list">
+                                    <span>转发数（230）/ 评论数（29）</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="layui-row">
-                <table id="taskTable"></table>
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-md5">
+                <div class="jsy-card">
+                    <div id="radar" style="height:300px;"></div>
+                </div>
+            </div>
+            <div class="layui-col-md7">
+                <div style="height:300px;" class="jsy-card">
+                    <div style="text-align: center;">
+                        <strong>
+                            <span style="font-size: 18px;color:#fff">3天内同类文章影响力对比</span>
+                        </strong>
+                    </div>
+                    <div class="progress-title">
+                        <span>1.建设世界科技强国，看习近平十大关键词</span>
+                    </div>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-green" lay-percent="90%"></div>
+                    </div>
+                    <div class="progress-title">
+                        <span>1.建设世界科技强国，看习近平十大关键词</span>
+                    </div>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-green" lay-percent="50%"></div>
+                    </div>
+                    <div class="progress-title">
+                        <span>1.建设世界科技强国，看习近平十大关键词</span>
+                    </div>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-green" lay-percent="70%"></div>
+                    </div>
+                    <div class="progress-title">
+                        <span>1.建设世界科技强国，看习近平十大关键词</span>
+                    </div>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-green" lay-percent="20%"></div>
+                    </div>
+                    <div class="progress-title">
+                        <span>1.建设世界科技强国，看习近平十大关键词</span>
+                    </div>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-green" lay-percent="58%"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="text-align: center">
-            <div id="page"></div>
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-md6">
+                <div class="jsy-card">
+                    <div id="line" style="height:300px;"></div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div style="height:300px;overflow: auto;" class="jsy-card">
+                    <ul class="layui-timeline">
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis"></i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">8月18日</h3>
+                                <p>建设世界科技强国，看习近平十大关键词</p>
+                                <p>新华网-首页/影响力指数：78.3</p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis"></i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">8月16日</h3>
+                                <p>建设世界科技强国，看习近平十大关键词</p>
+                                <p>新华网-首页/影响力指数：78.3</p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis"></i>
+                            <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">8月15日</h3>
+                                <p>建设世界科技强国，看习近平十大关键词</p>
+                                <p>新华网-首页/影响力指数：78.3</p>
+                            </div>
+                        </li>
+                        <li class="layui-timeline-item">
+                            <i class="layui-icon layui-timeline-axis"></i>
+                            <div class="layui-timeline-content layui-text">
+                                <div class="layui-timeline-title">
+                                    <h3 class="layui-timeline-title">过去</h3>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-md6">
+                <div class="jsy-card">
+                    <div id="map" style="height:300px;"></div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="jsy-card">
+                    <div id="pie" style="height:300px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="jsy-card">
+            <div id ="bar" style="height:400px;"></div>
         </div>
     </div>
     <script type="text/html" id="barBtn">
@@ -210,6 +326,16 @@
             background: rgb(34, 34, 34);
             border: rgb(70, 69, 69) 1px solid;
             color: white
+        }
+
+        i {
+            color: #fff;
+        }
+
+        .progress-title {
+            font-size: 14px;
+            color: #fff;
+            padding-top: 15px;
         }
     </style>
 </body>
