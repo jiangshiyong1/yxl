@@ -24,6 +24,8 @@
     <script src="./js/effect/effect-map.js" charset="utf-8"></script>
     <script src="./js/effect/effect-pie.js" charset="utf-8"></script>
     <script src="./js/effect/effect-bar.js" charset="utf-8"></script>
+    <script src="./js/effect/effect-progress.js" charset="utf-8"></script>
+    <script src="./js/effect/effect-timesTree.js" charset="utf-8"></script>
     <script src="./js/china.js" charset="utf-8"></script>
     <script src="./lib/layui/lay/modules/laydate.js" charset="utf-8"></script>
 </head>
@@ -40,41 +42,36 @@
                 <div style="height:200px;" class="jsy-card">
                     <div class="msg-list-main" id="one">
                         <div style="color: #fff" class="msg-list">
-                            <a href="javascript:void(0)" style="color:#5FB878" class="msg-title">网传中共将全面封网 专家称不太可能实现</a>
-                            <span style="float:right;padding-top:15px;"> 新华网-首页 / 2017-11-07 00:00:00</span>
-                            <p>【大纪元2018年01月11日讯】（大纪元记者萧律生采访报导）近日，网传2018年1月11日前，
-                                <span>中共</span>会全面封锁 虚拟私人网络（VPN）及广域网络（SD-WAN）接入。不过技术专家认为这种操作不太可能实现，对网民的
-                                <span>翻墙</span>影响不是太大。
-                            </p>
-                            <br/>
-                            <br/>
+                            <a href="javascript:void(0)" style="color:#5FB878" id="title" class="msg-title"></a>
+                            <span id="info" style="float:right;padding-top:15px;"></span>
+                            <p id="fields"></p>
                             <div class="msg-list-column">
                                 <div class="msg-list-column-list">
                                     <a>
                                         <i class="iconfont">&#xe715;</i>
                                     </a>
-                                    <span>北京</span>
+                                    <span id="localtion"></span>
                                 </div>
                                 <div class="msg-list-column-list">
                                     <a>
                                         <i class="layui-icon layui-icon-note"></i>
                                     </a>
-                                    <span>教科文卫</span>
+                                    <span id="classB"></span>
                                 </div>
                                 <div class="msg-list-column-list">
                                     <a>
                                         <i class="layui-icon layui-icon-rate"></i>
                                     </a>
-                                    <span>首页头条</span>
+                                    <span id="website"></span>
                                 </div>
                                 <div class="msg-list-column-list">
                                     <a>
                                         <i class="iconfont">&#xe705;</i>
                                     </a>
-                                    <span>5000字</span>
+                                    <span id="words">5000字</span>
                                 </div>
                                 <div style="float:right;padding-top:2px;" class="msg-list-column-list">
-                                    <span>转发数（230）/ 评论数（29）</span>
+                                    <span id="commontAndReward"></span>
                                 </div>
                             </div>
                         </div>
@@ -89,41 +86,11 @@
                 </div>
             </div>
             <div class="layui-col-md7">
-                <div style="height:300px;" class="jsy-card">
+                <div id="appendProgress" style="height:300px;" class="jsy-card">
                     <div style="text-align: center;">
                         <strong>
                             <span style="font-size: 18px;color:#fff">3天内同类文章影响力对比</span>
                         </strong>
-                    </div>
-                    <div class="progress-title">
-                        <span>1.建设世界科技强国，看习近平十大关键词</span>
-                    </div>
-                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
-                        <div class="layui-progress-bar layui-bg-green" lay-percent="90%"></div>
-                    </div>
-                    <div class="progress-title">
-                        <span>1.建设世界科技强国，看习近平十大关键词</span>
-                    </div>
-                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
-                        <div class="layui-progress-bar layui-bg-green" lay-percent="50%"></div>
-                    </div>
-                    <div class="progress-title">
-                        <span>1.建设世界科技强国，看习近平十大关键词</span>
-                    </div>
-                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
-                        <div class="layui-progress-bar layui-bg-green" lay-percent="70%"></div>
-                    </div>
-                    <div class="progress-title">
-                        <span>1.建设世界科技强国，看习近平十大关键词</span>
-                    </div>
-                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
-                        <div class="layui-progress-bar layui-bg-green" lay-percent="20%"></div>
-                    </div>
-                    <div class="progress-title">
-                        <span>1.建设世界科技强国，看习近平十大关键词</span>
-                    </div>
-                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
-                        <div class="layui-progress-bar layui-bg-green" lay-percent="58%"></div>
                     </div>
                 </div>
             </div>
@@ -136,40 +103,7 @@
             </div>
             <div class="layui-col-md6">
                 <div style="height:300px;overflow: auto;" class="jsy-card">
-                    <ul class="layui-timeline">
-                        <li class="layui-timeline-item">
-                            <i class="layui-icon layui-timeline-axis"></i>
-                            <div class="layui-timeline-content layui-text">
-                                <h3 class="layui-timeline-title">8月18日</h3>
-                                <p>建设世界科技强国，看习近平十大关键词</p>
-                                <p>新华网-首页/影响力指数：78.3</p>
-                            </div>
-                        </li>
-                        <li class="layui-timeline-item">
-                            <i class="layui-icon layui-timeline-axis"></i>
-                            <div class="layui-timeline-content layui-text">
-                                <h3 class="layui-timeline-title">8月16日</h3>
-                                <p>建设世界科技强国，看习近平十大关键词</p>
-                                <p>新华网-首页/影响力指数：78.3</p>
-                            </div>
-                        </li>
-                        <li class="layui-timeline-item">
-                            <i class="layui-icon layui-timeline-axis"></i>
-                            <div class="layui-timeline-content layui-text">
-                                <h3 class="layui-timeline-title">8月15日</h3>
-                                <p>建设世界科技强国，看习近平十大关键词</p>
-                                <p>新华网-首页/影响力指数：78.3</p>
-                            </div>
-                        </li>
-                        <li class="layui-timeline-item">
-                            <i class="layui-icon layui-timeline-axis"></i>
-                            <div class="layui-timeline-content layui-text">
-                                <div class="layui-timeline-title">
-                                    <h3 class="layui-timeline-title">过去</h3>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul id="treeRoot" class="layui-timeline"></ul>
                 </div>
             </div>
         </div>

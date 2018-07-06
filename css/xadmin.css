@@ -561,3 +561,14 @@ dd:hover{
 p{
 	color:#fff;
 }
+.layui-laydate {
+	background: #2B2B2B !important;
+}
+.msg-list > p {
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    max-height: 95px !important;
+    width: 100%;
+    overflow: auto !important;
+}

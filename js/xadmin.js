@@ -1,5 +1,6 @@
 $(function () {
-
+    var address = "http://192.168.200.188:3000/rpc/"
+    localStorage.setItem('address',address)
     //加载弹出层
     layui.use(['form','element'],
     function() {
