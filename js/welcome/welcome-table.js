@@ -1,4 +1,20 @@
 $(function () {
+    // 进度条
+    layui.use('element', function () {
+        var $ = layui.jquery
+            , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+    });
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#carousel'
+            , width: '100%' //设置容器宽度
+            , arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    });
     layui.use('laydate', function () {
         var laydate = layui.laydate
         var ip = localStorage.getItem('address')
@@ -113,7 +129,7 @@ function loadTable(url, obj) {
                         $('.layui-table-body').find("table").find("tbody").children("tr").on('dblclick', function (event) {
                             var id = JSON.stringify($('.layui-table-body').find("table").find("tbody").find(".layui-table-hover").data('index'));
                             var obj = res.data[id];
-                            parent.showPage("./effect.html?"+obj.id)
+                            parent.showPage("./effect.html?" + obj.id)
                         })
                     }
                 });
@@ -125,10 +141,6 @@ function loadTable(url, obj) {
                     }
                 }, 300)
             }
-        });
-        //监听表格复选框选择
-        table.on('checkbox(demoEvent)', function (obj) {
-            alert(obj)
         });
     });
 }

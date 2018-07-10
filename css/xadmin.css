@@ -572,3 +572,6 @@ p{
     width: 100%;
     overflow: auto !important;
 }
+.layui-layer-title{
+	background: black !important;
+}

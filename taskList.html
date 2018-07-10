@@ -19,7 +19,6 @@
     <script src="./js/echarts.js" charset="utf-8"></script>
     <script src="./js/xadmin.js" charset="utf-8"></script>
     <script src="./js/taskList/task-main.js" charset="utf-8"></script>
-    <script src="./js/taskList/task-btn.js" charset="utf-8"></script>
     <script src="./lib/layui/lay/modules/laydate.js" charset="utf-8"></script>
 </head>
 
@@ -33,32 +32,87 @@
         </div>
         <div class="layui-row layui-col-space10">
             <div class="layui-col-md4">
-                <button id="day-1" class="layui-btn layui-btn-primary">今天</button>
-                <button id="day-2" class="layui-btn layui-btn-primary">3天</button>
-                <button id="day-3" class="layui-btn layui-btn-primary">7天</button>
-                <button id="day-4" class="layui-btn layui-btn-primary">30天</button>
-                <button id="day-5" class="layui-btn layui-btn-primary">自定义</button>
+                <button id="day-1" value="0" class="layui-btn layui-btn-primary">今天</button>
+                <button id="day-2" value="3" class="layui-btn layui-btn-primary">3天</button>
+                <button id="day-3" value="7" class="layui-btn layui-btn-primary">7天</button>
+                <button id="day-4" value="30" class="layui-btn layui-btn-primary">30天</button>
+                <button id="day-5" value="more" class="layui-btn layui-btn-primary">自定义</button>
+                <br/>
+                <div id="moreDay" class="layui-inline" style="padding-top:10px;display: none">
+                    <div class="layui-input-inline">
+                        <input style="float:left;" type="text" class="layui-input" id="date" placeholder="日期范围">
+                    </div>
+                </div>
             </div>
             <div class="layui-col-md4" style="text-align:center;">
-                <button id="class-1" class="layui-btn layui-btn-primary">全部</button>
-                <button id="class-2" class="layui-btn layui-btn-primary">社会民生</button>
-                <button id="class-3" class="layui-btn layui-btn-primary">经济金融</button>
-                <button id="class-4" class="layui-btn layui-btn-primary">教科文卫</button>
-                <button id="class-5" class="layui-btn layui-btn-primary">更多</button>
+                <button id="class-1" value="" class="layui-btn layui-btn-primary">全部</button>
+                    <button id="class-2" value="时政" class="layui-btn layui-btn-primary">时政</button>
+                    <button id="class-3" value="藏疆伊穆" class="layui-btn layui-btn-primary">藏疆伊穆</button>
+                    <button id="class-4" value="社会热点" class="layui-btn layui-btn-primary">社会热点</button>
+                    <button id="class-5" value="more" class="layui-btn layui-btn-primary">更多</button>
+                    <div id="moreClass" class="layui-inline" style="padding-top:10px;display: none">
+                        <button id="moreClass-1" value="反腐" class="layui-btn layui-btn-primary">反腐</button>
+                        <button id="moreClass-3" value="经济" class="layui-btn layui-btn-primary">经济</button>
+                        <button id="moreClass-4" value="灾害事故" class="layui-btn layui-btn-primary">灾害事故</button>
+                    </div>
             </div>
             <div class="layui-col-md4" style="text-align:right;">
-                <button id="address-1" class="layui-btn layui-btn-primary">全部</button>
-                <button id="address-2" class="layui-btn layui-btn-primary">北京</button>
-                <button id="address-3" class="layui-btn layui-btn-primary">青海</button>
-                <button id="address-4" class="layui-btn layui-btn-primary">甘肃</button>
-                <button id="address-5" class="layui-btn layui-btn-primary">更多</button>
+                <button id="address-1" value="" class="layui-btn layui-btn-primary">全部</button>
+                <button id="address-2" value="北京" class="layui-btn layui-btn-primary">北京</button>
+                <button id="address-3" value="青海" class="layui-btn layui-btn-primary">青海</button>
+                <button id="address-4" value="甘肃" class="layui-btn layui-btn-primary">甘肃</button>
+                <button id="address-5" value="more" class="layui-btn layui-btn-primary">更多</button>
+                <br/>
+                <div id="moreAddress" class="layui-inline" style="padding-top:10px;display: none">
+                    <form style="color:#fff" class="layui-form">
+                        <div class="layui-form-item">
+                            <div style="text-align:left;" class="layui-input-inline">
+                                <select style="width:100%;" lay-filter="province" name="province">
+                                    <option value="">--请选择--</option>
+                                    <option value="辽宁">辽宁</option>
+                                    <option value="吉林">吉林</option>
+                                    <option value="黑龙江">黑龙江</option>
+                                    <option value="河北">河北</option>
+                                    <option value="山西">山西</option>
+                                    <option value="陕西">陕西</option>
+                                    <option value="山东">山东</option>
+                                    <option value="安徽">安徽</option>
+                                    <option value="江苏">江苏</option>
+                                    <option value="浙江">浙江</option>
+                                    <option value="河南">河南</option>
+                                    <option value="湖北">湖北</option>
+                                    <option value="湖南">湖南</option>
+                                    <option value="江西">江西</option>
+                                    <option value="台湾">台湾</option>
+                                    <option value="福建">福建</option>
+                                    <option value="云南">云南</option>
+                                    <option value="海南">海南</option>
+                                    <option value="四川">四川</option>
+                                    <option value="贵州">贵州</option>
+                                    <option value="广东">广东</option>
+                                    <option value="内蒙古">内蒙古</option>
+                                    <option value="新疆">新疆</option>
+                                    <option value="广西">广西</option>
+                                    <option value="西藏">西藏</option>
+                                    <option value="宁夏">宁夏</option>
+                                    <option value="上海">上海</option>
+                                    <option value="天津">天津</option>
+                                    <option value="重庆">重庆</option>
+                                    <option value="香港">香港</option>
+                                    <option value="澳门">澳门</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div style="padding-top:20px ;" class="layui-row">
             <div class="jsy-card">
                 <div class="layui-row">
                     <div class="layui-col-md6">
-                        <a onclick="x_admin_show('新建任务','newTask.html',800, 500)" style="height: 30px;line-height: 30px;padding: 0 18px;" class="layui-btn layui-btn-new-jsy layui-btn-xs" lay-event="del">新建</a>
+                        <a onclick="x_admin_show('新建任务','newTask.html',800, 500)" style="height: 30px;line-height: 30px;padding: 0 18px;" class="layui-btn layui-btn-new-jsy layui-btn-xs"
+                            lay-event="del">新建</a>
                         <a style="height: 30px;line-height: 30px;padding: 0 18px;" class="layui-btn layui-btn-danger-jsy layui-btn-xs" lay-event="del">删除</a>
                     </div>
                     <div class="layui-col-md6">
@@ -69,7 +123,7 @@
             </div>
         </div>
         <div class="layui-row">
-                <table id="taskTable"></table>
+            <table id="taskTable"></table>
         </div>
         <div style="text-align: center">
             <div id="page"></div>
