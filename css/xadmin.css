@@ -484,7 +484,7 @@ table th, table td {
 	background: #2B2B2B;
 }
 .jsy-divBorder {
-	/* border: 1px solid #2B2B2B */
+	border: 1px solid #2B2B2B
 }
 
 .layui-table-click {
@@ -574,4 +574,18 @@ p{
 }
 .layui-layer-title{
 	background: black !important;
+}
+.layui-form-select dl dd.layui-this {
+    background-color: #2B2B2B !important;
+    color: #fff;
+}
+.layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+    background-color:#2B2B2B !important;
+    color: #fff;
+}
+.layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool, .layui-table[lay-even] tr:nth-child(even) {
+    background-color: #2B2B2B !important;
+}
+.layui-layer-msg {
+	color:#fff !important;
 }

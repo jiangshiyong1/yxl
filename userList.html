@@ -19,6 +19,7 @@
     <script src="./js/echarts.js" charset="utf-8"></script>
     <script src="./js/xadmin.js" charset="utf-8"></script>
     <script src="./js/userList/user-main.js" charset="utf-8"></script>
+    <script src="./js/userList/user-select.js" charset="utf-8"></script>
     <script src="./lib/layui/lay/modules/laydate.js" charset="utf-8"></script>
 </head>
 
@@ -35,14 +36,28 @@
                 <form style="color:#fff" class="layui-form">
                     <div class="layui-form-item">
                         <label for="keywords" class="layui-form-label">
-                            <span class="x-red">*</span>用户角色
+                            用户角色
                         </label>
                         <div class="layui-input-inline">
-                            <select name="keywords">
+                            <select lay-filter="roles" id="roles"></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-col-md4 layui-col-xs4">
+                <form style="color:#fff" class="layui-form">
+                    <div class="layui-form-item">
+                        <label for="location" class="layui-form-label">
+                            归属地
+                        </label>
+                        <div class="layui-input-inline">
+                            <select lay-filter="location" id="location">
                                 <option value="">--请选择--</option>
-                                <option value="标题+正文">标题+正文</option>
-                                <option value="仅标题">仅标题</option>
-                                <option value="仅正文">仅正文</option>
+                                <option value="甘肃">甘肃</option>
+                                <option value="西藏">西藏</option>
+                                <option value="青海">青海</option>
+                                <option value="四川">四川</option>
+                                <option value="云南">云南</option>
                             </select>
                         </div>
                     </div>
@@ -51,33 +66,11 @@
             <div class="layui-col-md4 layui-col-xs4">
                 <form style="color:#fff" class="layui-form">
                     <div class="layui-form-item">
-                        <label for="keywords" class="layui-form-label">
-                            <span class="x-red">*</span>归属地
+                        <label for="userName" class="layui-form-label">
+                            用户名
                         </label>
                         <div class="layui-input-inline">
-                            <select name="keywords">
-                                <option value="">--请选择--</option>
-                                <option value="标题+正文">标题+正文</option>
-                                <option value="仅标题">仅标题</option>
-                                <option value="仅正文">仅正文</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="layui-col-md4 layui-col-xs4">
-                <form style="color:#fff" class="layui-form">
-                    <div class="layui-form-item">
-                        <label for="keywords" class="layui-form-label">
-                            <span class="x-red">*</span>用户名
-                        </label>
-                        <div class="layui-input-inline">
-                            <select name="keywords">
-                                <option value="">--请选择--</option>
-                                <option value="标题+正文">标题+正文</option>
-                                <option value="仅标题">仅标题</option>
-                                <option value="仅正文">仅正文</option>
-                            </select>
+                            <input lay-filter="userName" id="userName" type="text" name="userName" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                 </form>
@@ -94,14 +87,14 @@
             </div>
         </div>
         <div class="layui-row">
-            <table id="taskTable"></table>
+            <table lay-filter="demo" id="taskTable"></table>
         </div>
         <div style="text-align: center">
             <div id="page"></div>
         </div>
     </div>
     <script type="text/html" id="switchTp">
-        <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="" lay-filter="sexDemo" {{ d.id == 1 ? 'checked' : '' }}>
+        <input type="checkbox" name="is_using" value="{{d.is_using}}" lay-skin="switch" lay-text=""  {{ d.is_using == 1 ? 'checked' : '' }}>
       </script>
     <script type="text/html" id="barBtn">
         <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>-->
@@ -121,9 +114,9 @@
         .layui-input,
         .layui-select,
         .layui-textarea {
-            height: 25px;
-            line-height: 25px;
-            line-height: 25px;
+            height: 30px;
+            line-height: 30px;
+            line-height: 30px;
             border: 1px solid #464545;
             background-color: rgb(34, 34, 34);
             color: #fff;

@@ -19,13 +19,13 @@ $(function () {
         var laydate = layui.laydate
         var ip = localStorage.getItem('address')
         var obj = {
-            time_range: 0,
+            time_range: 30,
             news_type: "",
             media_location: ""
         }
         var address = ip + "select_task_today"
         loadTable(address, obj)
-        $('#day-1').addClass("btn-focus")
+        $('#day-4').addClass("btn-focus")
         $('#class-1').addClass("btn-focus")
         $('#address-1').addClass("btn-focus")
         $("button[id^='day-']").click(function (event) {
@@ -108,12 +108,15 @@ function loadTable(url, obj) {
                 layer.msg("出错啦！")
             },
             success: function (res) {
+                for (var i in res) {
+                    res[i].ranking = parseInt(i) + 1
+                }
                 table.render({
                     elem: '#indexTable'
                     // , url: './json/table.json'
                     , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                     , cols: [[
-                        { field: 'id', width: 80, title: '排名' }
+                        { field: 'ranking', width: 80, title: '排名' }
                         , { field: 'task_title', width: '20%', minWidth: 100, title: '文章标题' }
                         , { field: 'task_location', width: 80, title: '省份' }
                         , { field: 'task_add_time', width: '10%', minWidth: 100, title: '时间' }

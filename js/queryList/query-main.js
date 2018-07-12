@@ -1,18 +1,19 @@
 $(function () {
+    var keywords = unescape(window.location.href).split("?")[1]
     layui.use(['laydate', 'laypage'], function () {
         var laydate = layui.laydate,
             laypage = layui.laypage
         var ip = localStorage.getItem('address')
         var obj = {
             time_range: 30,
+            task_title: keywords,
             news_type: "",
             media_location: "",
-            task_title: '',
             task_location: '',
             offset_value: 1
         }
-        var address = ip + "select_task_for_management"
-        var pageUrl = ip + "page_task_for_management"
+        var address = ip + "select_task_with_condition"
+        var pageUrl = ip + "page_task_with_condition"
         loadTable(address, obj, pageUrl)
         $('#day-4').addClass("btn-focus")
         $('#class-1').addClass("btn-focus")
@@ -29,8 +30,8 @@ $(function () {
                         var arr = value.split(' - ')
                         obj.start_time = arr[0]
                         obj.end_time = arr[1]
-                        address = ip + "select_task_for_management_with_definetime"
-                        pageUrl = ip + "page_task_for_management_with_definetime"
+                        pageUrl = ip + "page_task_with_definetime"
+                        address = ip + "select_task_with_definetime"
                         delete obj.time_range
                         loadTable(address, obj, pageUrl)
                     }
@@ -41,8 +42,7 @@ $(function () {
                 obj.time_range = day
                 delete obj.start_time
                 delete obj.end_time
-                address = ip + "select_task_for_management"
-                pageUrl = ip + "page_task_for_management"
+                pageUrl = ip + "page_task_with_condition"
                 $("#moreDay").hide()
                 loadTable(address, obj, pageUrl)
             }
@@ -99,7 +99,6 @@ function loadTable(url, obj, pageUrl, page) {
     layui.use(['table', 'laypage'], function () {
         var laypage = layui.laypage
         var pageObj = copyObj(obj)
-        delete pageObj.task_location
         delete pageObj.offset_value
         $.ajax({
             type: "POST",
@@ -110,6 +109,13 @@ function loadTable(url, obj, pageUrl, page) {
                 layer.msg("出错啦！")
             },
             success: function (pageObj) {
+                $('#textTitle').empty()
+                var text = unescape(window.location.href).split("?")[1] === '' ? '' : unescape(window.location.href).split("?")[1]+'：'
+                var node = '<span style="font-size: 18px; color: #5FB878;">'+text+'</span>' +
+                    '<span style="font-size: 16px; color: #fff;">相关文章</span>' +
+                    '<span style="font-size: 18px; color: #5FB878;">'+pageObj[0].total+'</span>' +
+                    '<span style="font-size: 16px; color: #fff;">篇</span>'
+                $('#textTitle').append(node)
                 laypage.render({
                     elem: 'page'
                     , count: pageObj[0].total
@@ -155,31 +161,6 @@ function loadData(url, obj, pageUrl) {
                     ]]
                     , data: res
                 });
-            }
-        })
-        //监听工具条
-        table.on('tool(toolBar)', function (obj) {
-            var data = obj.data;
-            if (obj.event === 'detail') {
-                layer.msg('ID：' + data.id + ' 的查看操作');
-            } else if (obj.event === 'del') {
-                layer.confirm('真的删除行么', function (index) {
-                    $.ajax({
-                        type: "POST",
-                        url: localStorage.getItem('address') + 'delete_user_info_with_id',
-                        data: { id: data.id },
-                        dataType: "json",
-                        error: function (msg) {
-                            layer.msg("出错啦！")
-                        },
-                        success: function (res) {
-                            location.reload()
-                        }
-                    })
-                    layer.close(index);
-                });
-            } else if (obj.event === 'edit') {
-                x_admin_show('编辑任务', 'editTask.html?' + escape(JSON.stringify(data)), 800, 600)
             }
         })
     })

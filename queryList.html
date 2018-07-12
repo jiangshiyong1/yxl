@@ -18,16 +18,14 @@
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script src="./js/echarts.js" charset="utf-8"></script>
     <script src="./js/xadmin.js" charset="utf-8"></script>
-    <script src="./js/taskList/task-main.js" charset="utf-8"></script>
+    <script src="./js/queryList/query-main.js" charset="utf-8"></script>
     <script src="./lib/layui/lay/modules/laydate.js" charset="utf-8"></script>
 </head>
 
 <body>
     <div class="x-body">
         <div style="padding:20px 0 20px 0;" class="layui-row">
-            <div class="jsy-divBorder">
-                <i class="layui-icon layui-icon-template-1" style="font-size: 25px; color: white"></i>
-                <span style="font-size: 22px; color: white; padding-left:10px;">任务列表</span>
+            <div id="textTitle" class="jsy-divBorder">
             </div>
         </div>
         <div class="layui-row layui-col-space10">
@@ -46,15 +44,15 @@
             </div>
             <div class="layui-col-md4" style="text-align:center;">
                 <button id="class-1" value="" class="layui-btn layui-btn-primary">全部</button>
-                    <button id="class-2" value="时政" class="layui-btn layui-btn-primary">时政</button>
-                    <button id="class-3" value="藏疆伊穆" class="layui-btn layui-btn-primary">藏疆伊穆</button>
-                    <button id="class-4" value="社会热点" class="layui-btn layui-btn-primary">社会热点</button>
-                    <button id="class-5" value="more" class="layui-btn layui-btn-primary">更多</button>
-                    <div id="moreClass" class="layui-inline" style="padding-top:10px;display: none">
-                        <button id="moreClass-1" value="反腐" class="layui-btn layui-btn-primary">反腐</button>
-                        <button id="moreClass-3" value="经济" class="layui-btn layui-btn-primary">经济</button>
-                        <button id="moreClass-4" value="灾害事故" class="layui-btn layui-btn-primary">灾害事故</button>
-                    </div>
+                <button id="class-2" value="时政" class="layui-btn layui-btn-primary">时政</button>
+                <button id="class-3" value="藏疆伊穆" class="layui-btn layui-btn-primary">藏疆伊穆</button>
+                <button id="class-4" value="社会热点" class="layui-btn layui-btn-primary">社会热点</button>
+                <button id="class-5" value="more" class="layui-btn layui-btn-primary">更多</button>
+                <div id="moreClass" class="layui-inline" style="padding-top:10px;display: none">
+                    <button id="moreClass-1" value="反腐" class="layui-btn layui-btn-primary">反腐</button>
+                    <button id="moreClass-3" value="经济" class="layui-btn layui-btn-primary">经济</button>
+                    <button id="moreClass-4" value="灾害事故" class="layui-btn layui-btn-primary">灾害事故</button>
+                </div>
             </div>
             <div class="layui-col-md4" style="text-align:right;">
                 <button id="address-1" value="" class="layui-btn layui-btn-primary">全部</button>
@@ -123,7 +121,9 @@
             </div>
         </div>
         <div class="layui-row">
-            <table lay-filter="toolBar" id="taskTable"></table>
+            <div class="jsy-divBorder">
+                <table id="taskTable"></table>
+            </div>
         </div>
         <div style="text-align: center">
             <div id="page"></div>

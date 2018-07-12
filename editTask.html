@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"
+    />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link type="text/css" rel="stylesheet" href="./lib/layui/css/layui.css">
+    <script type="text/javascript" src="./lib/jquery.js"></script>
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script src="./js/taskList/editTask-main.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="x-body">
+        <form lay-filter="myForm" style="color:#fff" class="layui-form">
+            <input name="id" style="display: none" autocomplete="off" class="layui-input">
+            <div style="padding-top:20px;" class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-xs2">
+                        <label class="layui-form-label">
+                            <span class="x-red">*</span>任务标题</label>
+                    </div>
+                    <div class="layui-col-xs10">
+                        <textarea name="task_title" style="height:25px;" placeholder="请输入内容" lay-verify="required|limitString" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-top:20px;" class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-xs2">
+                        <label class="layui-form-label">
+                            <span class="x-red">*</span>任务内容</label>
+                    </div>
+                    <div class="layui-col-xs10">
+                        <textarea name="task_content" style="height:250px;" placeholder="请输入内容" lay-verify="required|limitString" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-xs2">
+                        <label class="layui-form-label">使用年限</label>
+                    </div>
+                    <div class="layui-col-xs10">
+                        <select name="news_type" style="width:100%;" lay-filter="news_type" name="province">
+                            <option value="">--请选择--</option>
+                            <option value="时政">时政</option>
+                            <option value="藏疆伊穆">藏疆伊穆</option>
+                            <option value="社会热点">社会热点</option>
+                            <option value="反腐">反腐</option>
+                            <option value="经济">经济</option>
+                            <option value="灾害事故">灾害事故</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="orgin-btn layui-btn-new-jsy" lay-submit="" lay-filter="add">立即提交</button>
+                    <button id="closeWindow" type="reset" class="orgin-btn layui-btn-primary">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>var _hmt = _hmt || []; (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script>
+    <style>
+        .layui-btn {
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            padding: 0 10px;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 2px;
+            cursor: pointer;
+            opacity: .9;
+        }
+
+        .orgin-btn {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 18px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .layui-btn-primary {
+            border: 1px solid white;
+            background-color: rgb(34, 34, 34);
+            color: white;
+        }
+
+        .layui-btn-primary:hover {
+            border: 1px solid #5FB878;
+            background-color: rgb(34, 34, 34);
+            color: #5FB878;
+        }
+
+        .btn-focus {
+            border: 1px solid #5FB878;
+            background-color: rgb(34, 34, 34);
+            color: #5FB878;
+        }
+    </style>
+</body>
+
+</html>

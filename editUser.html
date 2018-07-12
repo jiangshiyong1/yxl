@@ -15,35 +15,20 @@
     <link type="text/css" rel="stylesheet" href="./lib/layui/css/layui.css">
     <script type="text/javascript" src="./lib/jquery.js"></script>
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script src="./js/userList/newUser-main.js" charset="utf-8"></script>
+    <script src="./js/userList/editUser-main.js" charset="utf-8"></script>
     <script src="./js/userList/user-select.js" charset="utf-8"></script>
 </head>
 
 <body>
     <div class="x-body">
         <form lay-filter="myForm" style="color:#fff" class="layui-form">
+            <input name="id" style="display: none" autocomplete="off" class="layui-input">
             <div style="padding-top:20px;" class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">
                         <span class="x-red">*</span>用户名</label>
                     <div class="layui-input-inline">
                         <input name="user_name" lay-verify="required|limitString" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div id="isshow" class="layui-inline">
-                    <label class="layui-form-label">
-                        <span class="x-red">*</span>设置密码</label>
-                    <div class="layui-input-inline">
-                        <input id="pass" name="passwd" lay-verify="required|pass" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">
-                        <span class="x-red">*</span>确认密码</label>
-                    <div class="layui-input-inline">
-                        <input id="repass" lay-verify="required|repass" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
@@ -63,57 +48,16 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label for="keywords" class="layui-form-label">
-                        <span class="x-red">*</span>归属地
-                    </label>
-                    <div class="layui-input-inline">
-                        <select name="home_location">
-                            <option value="">--请选择--</option>
-                            <option value="甘肃">甘肃</option>
-                            <option value="西藏">西藏</option>
-                            <option value="青海">青海</option>
-                            <option value="四川">四川</option>
-                            <option value="云南">云南</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">
-                            <span class="x-red">*</span>所属机构</label>
-                        <div class="layui-input-inline">
-                            <input lay-verify="required" name="department" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">
-                            <span class="x-red">*</span>手机号</label>
-                        <div class="layui-input-inline">
-                            <input type="tel" name="telephone" lay-verify="required|phone" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">
-                            <span class="x-red">*</span>邮箱地址</label>
-                        <div class="layui-input-inline">
-                            <input name="email" lay-verify="email" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">
-                            <span class="x-red">*</span>账号状态</label>
-                        <div class="layui-input-block">
-                            <input type="checkbox" name="is_using" lay-filter="is_using" lay-skin="switch" lay-text="ON|OFF">
-                        </div>
+                    <label class="layui-form-label">
+                        <span class="x-red">*</span>账号状态</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="is_using" lay-filter="is_using" lay-skin="switch" lay-text="ON|OFF">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="orgin-btn layui-btn-new-jsy" lay-submit="" lay-filter="add">立即提交</button>
-                    <button type="reset" class="orgin-btn layui-btn-primary">重置</button>
                     <button id="closeWindow" type="reset" class="orgin-btn layui-btn-primary">取消</button>
                 </div>
             </div>
