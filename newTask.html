@@ -15,7 +15,7 @@
     <link type="text/css" rel="stylesheet" href="./lib/layui/css/layui.css">
     <script type="text/javascript" src="./lib/jquery.js"></script>
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script src="./js/taskList/newTask-btn.js" charset="utf-8"></script>
+    <script src="./js/taskList/newTask-main.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -24,10 +24,12 @@
             <div style="padding-top:20px;" class="layui-form-item">
                 <label class="layui-form-label">任务类型</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="sex" value="0" title="关键词任务" checked="">
-                    <input type="radio" name="sex" value="1" title="url任务">
+                    <input type="radio" lay-filter="erweima" name="task" value="0" title="关键词任务" checked="">
+                    <input type="radio" lay-filter="erweima" name="task" value="1" title="url任务">
                 </div>
             </div>
+        </form>
+        <form id="keywordsTask" style="color:#fff" class="layui-form">
             <div class="layui-form-item">
                 <label for="times" class="layui-form-label">
                     <span class="x-red">*</span>时间
@@ -57,7 +59,7 @@
                     <span class="x-red">*</span>包含关键词
                 </label>
                 <div class="layui-input-inline">
-                    <select name="keywords">
+                    <select lay-verify="required" name="keywords">
                         <option value="">--请选择--</option>
                         <option value="标题+正文">标题+正文</option>
                         <option value="仅标题">仅标题</option>
@@ -102,6 +104,20 @@
                 <div class="layui-input-block">
                     <button class="orgin-btn layui-btn-new-jsy" lay-submit="" lay-filter="demo1">立即提交</button>
                     <button type="reset" class="orgin-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+        <form id="urlTask" style="color:#fff" class="layui-form">
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>批量添加URL</label>
+                <div class="layui-input-block">
+                    <textarea name="url" lay-verify="required" placeholder="" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div style="float:right;" class="layui-input-block">
+                    <button class="orgin-btn layui-btn-new-jsy" lay-submit="" lay-filter="urlAdd">抽取并校验</button>
                 </div>
             </div>
         </form>

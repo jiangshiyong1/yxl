@@ -55,6 +55,10 @@ $(function () {
             , done: function (value, date, endDate) {
                 obj.start_time = value.split(" - ")[0]
                 obj.end_time = value.split(" - ")[1]
+                if (obj.start_tim === undefined) {
+                    obj.start_time =  getNowFormatDate()
+                    obj.end_time = getNowFormatDate()
+                }
                 loadTable(url, obj, pageUrl)
             }
         });
@@ -129,10 +133,10 @@ function loadData(url, obj) {
                     , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                     , cols: [[
                         { field: 'id', title: '序号' }
-                        , { field: 'model', title: '操作模块' }
-                        , { field: 'items', title: '操作事项' }
-                        , { field: 'person', title: '操作人' }
-                        , { field: 'times', title: '操作时间' }
+                        , { field: 'operator_entity', title: '操作模块' }
+                        , { field: 'description', title: '操作事项' }
+                        , { field: 'username', title: '操作人' }
+                        , { field: 'operator_time', title: '操作时间' }
                         , { field: 'ip', title: '登录IP' }
                     ]]
                     , data: res

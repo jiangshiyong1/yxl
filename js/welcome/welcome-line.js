@@ -1,6 +1,7 @@
 $(function () {
-    layui.use('layer', function () { //独立版的layer无需执行这一句
+    layui.use(['layer', 'carousel'], function () { //独立版的layer无需执行这一句
         var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+        var carousel = layui.carousel;
         var address = localStorage.getItem('address')
         // 查询5个id
         $.ajax({
@@ -13,7 +14,7 @@ $(function () {
             success: function (data) {
                 var count = 0
                 for (var i in data) {
-                    // $('#rootCarousel').append('<div style="width: 100%;height:300px;" id="mainLine' + i + '"></div>')
+                    $('#rootCarousel').append('<div style="width: 100%;height:300px;" id="mainLine'+i+'"></div>')
                     $.ajax({
                         type: "POST",
                         url: address + "select_task_with_id",
@@ -34,6 +35,12 @@ $(function () {
                                 secondLine[j] = res[j].comment_number
                                 xAxisData[j] = res[j].execution_time
                             }
+                            // 轮播
+                            var ins3 = carousel.render({
+                                elem: '#carousel'
+                                , width: '100%' //设置容器宽度
+                                , arrow: 'always' //始终显示箭头
+                            })
                             seriesData.push({
                                 data: firstLine,
                                 type: 'line',

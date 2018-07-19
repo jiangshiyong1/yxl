@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"
+    />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./lib/layui/css/modules/laydate/default/laydate.css">
+    <link type="text/css" rel="stylesheet" href="./lib/layui/css/layui.css">
+    <script type="text/javascript" src="./lib/jquery.js"></script>
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script src="./js/echarts.js" charset="utf-8"></script>
+    <script src="./js/xadmin.js" charset="utf-8"></script>
+    <script src="./js/taskList/confirm-main.js" charset="utf-8"></script>
+    <script src="./lib/layui/lay/modules/laydate.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="x-body">
+        <div style="padding:20px 0 10px 0;" class="layui-row">
+            <div class="jsy-divBorder">
+                <i class="layui-icon layui-icon-template-1" style="font-size: 25px; color: white"></i>
+                <span style="font-size: 22px; color: white; padding-left:10px;">新建任务</span>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="jsy-card">
+                <div class="layui-row">
+                    <div class="layui-col-md6">
+                        <a onclick="insertTask()" style="height: 30px;line-height: 30px;padding: 0 18px;" class="layui-btn layui-btn-new-jsy layui-btn-xs"
+                            lay-event="del">确认录入</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="jsy-divBorder">
+                <table id="taskTable"></table>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <div id="page"></div>
+        </div>
+    </div>
+    <script type="text/html" id="barBtn">
+        <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>-->
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style>
+        .layui-input,
+        .layui-select,
+        .layui-textarea {
+            height: 25px;
+            line-height: 25px;
+            line-height: 25px;
+            border: 1px solid #464545;
+            background-color: rgb(34, 34, 34);
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        input[type="text"] {
+            background-color: rgb(34, 34, 34);
+        }
+
+        .layui-btn {
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            padding: 0 10px;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 2px;
+            cursor: pointer;
+            opacity: .9;
+        }
+
+        .orgin-btn {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 18px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .layui-btn-primary {
+            border: 1px solid white;
+            background-color: rgb(34, 34, 34);
+            color: white;
+        }
+
+        .layui-btn-primary:hover {
+            border: 1px solid #5FB878;
+            background-color: rgb(34, 34, 34);
+            color: #5FB878;
+        }
+
+        .btn-focus {
+            border: 1px solid #5FB878;
+            background-color: rgb(34, 34, 34);
+            color: #5FB878;
+        }
+
+        .new-word-table {
+            width: 100%;
+            display: inline-block;
+            float: left;
+        }
+
+        /* .layui-table {
+            width: 100% !important;
+        } */
+
+        .layui-table thead tr,
+        .layui-table-fixed-l tr,
+        .layui-table-header,
+        .layui-table-mend,
+        .layui-table-patch,
+        .layui-table-tool {
+            background-color: rgb(34, 34, 34);
+        }
+
+        .layui-table td,
+        .layui-table th,
+        .layui-table-header,
+        .layui-table-tool,
+        .layui-table-view,
+        .layui-table[lay-skin=row],
+        .layui-table[lay-skin=line] {
+            border: 0px solid #e2e2e2;
+        }
+
+        .layui-table th {
+            text-align: center;
+            font-weight: 400;
+            color: #5FB878
+        }
+
+        .layui-table td {
+            text-align: center;
+            font-weight: 400;
+            color: white;
+        }
+
+        tbody {
+            background: rgb(34, 34, 34);
+        }
+
+        .layui-table tbody tr:hover,
+        .layui-table-hover {
+            background: #2B2B2B !important;
+        }
+
+        table tr:nth-child(even) {
+            background: rgb(37, 37, 37);
+        }
+
+        .layui-box a {
+            background: rgb(34, 34, 34);
+            border: rgb(70, 69, 69) 1px solid;
+            color: white
+        }
+    </style>
+</body>
+
+</html>

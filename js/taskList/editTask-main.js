@@ -14,50 +14,39 @@ $(function () {
         if (!!data) {
             form.val('myForm', JSON.parse(data))
         }
-        //自定义验证规则
-        form.verify({
-            limitString: function (value) {
-                if (value.length < 2) {
-                    return '至少2个字符';
-                }
-            }
-            , pass: [/(.+){6,12}$/, '密码必须6到12位']
-            , repass: function (value) {
-                if ($('#pass').val() != $('#repass').val()) {
-                    return '两次密码不一致';
-                }
-            }
-        });
-
         //监听提交
-        form.on('submit(add)', function (data) {
+        form.on('submit(edit)', function (data) {
             var obj = data.field
-            for (var i in roleObj) {
-                if (obj.role_name === roleObj[i].role_name) {
-                    obj.role_id = roleObj[i].id
-                }
-            }
-            if (obj.is_using === 'on') {
-                obj.is_using = 1
-            } else {
-                obj.is_using = 0
-            }
+            obj.user_id = localStorage.getItem('user_id')
+            obj.username = localStorage.getItem('username')
+            obj.task_location = localStorage.getItem('task_location')
             $.ajax({
                 type: "POST",
-                url: address + 'update_user_info_with_id',
+                url: address + 'update_task_info_with_id',
                 data: obj,
                 dataType: "json",
                 error: function (msg) {
                     layer.msg("出错啦！")
                 },
                 success: function (res) {
-                    layer.alert("修改成功", { icon: 6 }, function () {
-                        // 获得frame索引
-                        var index = parent.layer.getFrameIndex(window.name);
-                        //关闭当前frame
-                        parent.layer.close(index);
-                        parent.location.reload();
-                    });
+                    if (res === 1) {
+                        layer.alert("修改成功", { icon: 6 }, function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            var obj = {
+                                'description': '修改了id为' + data.field.id + '的任务',
+                                'operator_entity' : 'task',
+                                'unique_id': 26,
+                                'operator_type': 'update',
+                            }
+                            insertLog(obj)
+                            parent.layer.close(index);
+                            parent.location.reload();
+                        });
+                    } else {
+                        layer.msg("出错啦！")
+                    }
                 }
             })
             return false;

@@ -19,7 +19,7 @@ $(function () {
                         value: data[i].count,
                         name: '中性'
                     })
-                } else {
+                } else if (data[i].tendentiousness === 2) {
                     arr.push({
                         value: data[i].count,
                         name: '负面'
@@ -41,51 +41,29 @@ $(function () {
                     trigger: 'item',
                     formatter: "{a} <br/>{b} : {c} ({d}%)"
                 },
-                visualMap: {
-                    show: false,
-                    min: 80,
-                    max: 600,
-                    inRange: {
-                        colorLightness: [0, 1]
-                    }
+                legend: {
+                    type: 'scroll',
+                    orient: 'vertical',
+                    right: 10,
+                    top: 20,
+                    bottom: 20,
+                    data: data.legendData,
+
+                    selected: data.selected
                 },
                 series: [
                     {
-                        name: '评论倾向分布',
+                        name: '倾向性',
                         type: 'pie',
                         radius: '55%',
-                        center: ['50%', '50%'],
+                        center: ['50%', '55%'],
                         data: arr.sort(function (a, b) { return a.value - b.value; }),
-                        roseType: 'radius',
-                        label: {
-                            normal: {
-                                textStyle: {
-                                    color: 'rgba(255, 255, 255, 0.3)'
-                                }
-                            }
-                        },
-                        labelLine: {
-                            normal: {
-                                lineStyle: {
-                                    color: 'rgba(255, 255, 255, 0.3)'
-                                },
-                                smooth: 0.2,
-                                length: 10,
-                                length2: 20
-                            }
-                        },
                         itemStyle: {
-                            normal: {
-                                color: '#c23531',
-                                shadowBlur: 200,
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
                                 shadowColor: 'rgba(0, 0, 0, 0.5)'
                             }
-                        },
-
-                        animationType: 'scale',
-                        animationEasing: 'elasticOut',
-                        animationDelay: function (idx) {
-                            return Math.random() * 200;
                         }
                     }
                 ]
